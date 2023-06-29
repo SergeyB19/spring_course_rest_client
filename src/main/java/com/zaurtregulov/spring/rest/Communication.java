@@ -19,7 +19,8 @@ public class Communication {
     public List<Employee> getAllEmployees() {
         ResponseEntity<List<Employee>> responseEntity = restTemplate
                 .exchange(URL, HttpMethod.GET, null
-                        , new ParameterizedTypeReference<List<Employee>>() {});
+                        , new ParameterizedTypeReference<List<Employee>>() {
+                        });
         List<Employee> allEmployees = responseEntity.getBody();
         return allEmployees;
     }
@@ -43,7 +44,7 @@ public class Communication {
     }
 
     public void deleteEmployee(int id) {
-
+        restTemplate.delete(URL + "/" + id);
+        System.out.println("Employee with ID " + id + " was deleted from DB");
     }
-
 }

@@ -19,8 +19,10 @@ public class App
 
 //        Employee empByID = communication.getEmployee(1);
 //        System.out.println(empByID);
+//
+//        Employee emp = new Employee("Sveta", "Sokolova", "HR", 900);
+//        communication.saveEmployee(emp);
 
-        Employee emp = new Employee("Sveta", "Sokolova", "HR", 900);
-        communication.saveEmployee(emp);
+        communication.deleteEmployee(18);
     }
 }
