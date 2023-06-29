@@ -3,7 +3,6 @@ package com.zaurtregulov.spring.rest;
 import com.zaurtregulov.spring.rest.configuration.MyConfig;
 import com.zaurtregulov.spring.rest.entity.Employee;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import java.util.List;
 
 public class App
@@ -13,7 +12,15 @@ public class App
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
 
         Communication communication = context.getBean("communication", Communication.class);
-        List<Employee> allEmployees = communication.getAllEmployees();
-        System.out.println(allEmployees);
+
+
+//        List<Employee> allEmployees = communication.getAllEmployees();
+//        System.out.println(allEmployees);
+
+//        Employee empByID = communication.getEmployee(1);
+//        System.out.println(empByID);
+
+        Employee emp = new Employee("Sveta", "Sokolova", "HR", 900);
+        communication.saveEmployee(emp);
     }
 }
