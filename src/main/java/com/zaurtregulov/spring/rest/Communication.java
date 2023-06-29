@@ -2,6 +2,9 @@ package com.zaurtregulov.spring.rest;
 
 import com.zaurtregulov.spring.rest.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,8 +16,12 @@ public class Communication {
     private RestTemplate restTemplate;
     private final String URL = "http://localhost:8080/spring_course_rest/api/employees";
 
-    public List<Employee> showAllEmployees() {
-        return null;
+    public List<Employee> getAllEmployees() {
+        ResponseEntity<List<Employee>> responseEntity = restTemplate
+                .exchange(URL, HttpMethod.GET, null
+                        , new ParameterizedTypeReference<List<Employee>>() {});
+        List<Employee> allEmployees = responseEntity.getBody();
+        return allEmployees;
     }
 
     public Employee getEmployee(int id) {
